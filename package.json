@@ -1,5 +1,5 @@
 {
-  "name": "zex-subgraph",
+  "name": "zEx-subgraph",
   "version": "1.0.0",
   "repository": {
     "type": "git",
@@ -25,12 +25,14 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.2"
   },
-  "description": "[BSCswap](https://zEx.com/) is a decentralized protocol for automated token exchange on Binance Smart Chain.",
+  "description": "[0x1 Exchange](https://0x1.exchange) is a decentralized protocol for automated token exchange on Binance Smart Chain.",
   "bugs": {
     "url": "https://github.com/tetra0x1/zEx-subgraph/issues"
   },
   "homepage": "https://github.com/tetra0x1/zEx-subgraph#readme",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "yarn": "^1.22.10"
+  },
   "author": ""
 }
