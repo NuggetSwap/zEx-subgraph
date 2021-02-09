@@ -1,7 +1,7 @@
 import { PairHourData } from './../types/schema'
 /* eslint-disable prefer-const */
 import { BigInt, BigDecimal, EthereumEvent } from '@graphprotocol/graph-ts'
-import { Pair, Bundle, Token, BSCswapFactory, BSCswapDayData, PairDayData, TokenDayData } from '../types/schema'
+import { Pair, Bundle, Token, Finance0x1Factory, BSCswapDayData, PairDayData, TokenDayData } from '../types/schema'
 import { ONE_BI, ZERO_BD, ZERO_BI, FACTORY_ADDRESS } from './helpers'
 
 // max number of entities to store
@@ -9,7 +9,7 @@ const maxTokenDayDatas = 10
 const maxPairDayDatas = 10
 
 export function updateBSCswapDayData(event: EthereumEvent): void {
-  let zEx = BSCswapFactory.load(FACTORY_ADDRESS)
+  let zEx = Finance0x1Factory.load(FACTORY_ADDRESS)
   let timestamp = event.block.timestamp.toI32()
   let dayID = timestamp / 86400
   let dayStartTimestamp = dayID * 86400

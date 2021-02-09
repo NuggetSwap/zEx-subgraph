@@ -4,7 +4,7 @@ import { BigInt, BigDecimal, store, Address } from '@graphprotocol/graph-ts'
 import {
   Pair,
   Token,
-  BSCswapFactory,
+  Finance0x1Factory,
   Transaction,
   BSCswapDayData,
   PairDayData,
@@ -39,7 +39,7 @@ export function handleTransfer(event: Transfer): void {
     return
   }
 
-  let factory = BSCswapFactory.load(FACTORY_ADDRESS)
+  let factory = Finance0x1Factory.load(FACTORY_ADDRESS)
   let transactionHash = event.transaction.hash.toHexString()
 
   // user stats
@@ -201,7 +201,7 @@ export function handleSync(event: Sync): void {
   let pair = Pair.load(event.address.toHex())
   let token0 = Token.load(pair.token0)
   let token1 = Token.load(pair.token1)
-  let zEx = BSCswapFactory.load(FACTORY_ADDRESS)
+  let zEx = Finance0x1Factory.load(FACTORY_ADDRESS)
 
   // reset factory liquidity by subtracting onluy tarcked liquidity
   zEx.totalLiquidityBNB = zEx.totalLiquidityBNB.minus(pair.trackedReserveBNB as BigDecimal)
@@ -272,7 +272,7 @@ export function handleMint(event: Mint): void {
   let mint = MintEvent.load(mints[mints.length - 1])
 
   let pair = Pair.load(event.address.toHex())
-  let zEx = BSCswapFactory.load(FACTORY_ADDRESS)
+  let zEx = Finance0x1Factory.load(FACTORY_ADDRESS)
 
   let token0 = Token.load(pair.token0)
   let token1 = Token.load(pair.token1)
@@ -327,7 +327,7 @@ export function handleBurn(event: Burn): void {
   let burn = BurnEvent.load(burns[burns.length - 1])
 
   let pair = Pair.load(event.address.toHex())
-  let zEx = BSCswapFactory.load(FACTORY_ADDRESS)
+  let zEx = Finance0x1Factory.load(FACTORY_ADDRESS)
 
   //update token info
   let token0 = Token.load(pair.token0)
@@ -433,7 +433,7 @@ export function handleSwap(event: Swap): void {
   pair.save()
 
   // update global values, only used tracked amounts for volume
-  let zEx = BSCswapFactory.load(FACTORY_ADDRESS)
+  let zEx = Finance0x1Factory.load(FACTORY_ADDRESS)
   zEx.totalVolumeUSD = zEx.totalVolumeUSD.plus(trackedAmountUSD)
   zEx.totalVolumeBNB = zEx.totalVolumeBNB.plus(trackedAmountBNB)
   zEx.untrackedVolumeUSD = zEx.untrackedVolumeUSD.plus(derivedAmountUSD)
