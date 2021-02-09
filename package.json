@@ -1,7 +1,7 @@
 {
   "name": "zEx-subgraph",
   "version": "1.0.0",
-  "repository": "https://github.com/tetra0x1/subgraph",
+  "repository": "https://github.com/tetra0x1/zEx-subgraph",
   "license": "GPL-3.0-or-later",
   "scripts": {
     "codegen": "graph codegen --output-dir src/types/",
